@@ -28,26 +28,50 @@ void Player::Update()
 {
 	if (CheckHitKey(KEY_INPUT_D)) {
 		x += 2;
-	}
+		Field* field = FindGameObject<Field>();
+		int push1 = field->HitCheckRight(x + 50, y + 5);
+		int push2 = field->HitCheckRight(x + 50, y + 63);
+		x -= max(push1, push2);
+		}
 	if (CheckHitKey(KEY_INPUT_A)) {
-		x -= 2;
+		x -= 2; 
+		Field* field = FindGameObject<Field>();
+		int push1 = field->HitCheckLeft(x + 14, y + 5);
+		int push2 = field->HitCheckLeft(x + 14, y + 63);
+		x += max(push1, push2);
 	}
 	if (onGround == true) {
 		if (CheckHitKey(KEY_INPUT_SPACE)) {
 			velocity = V0;
+			onGround = false;
 		}
 	}
 
 	y += velocity;
 	velocity += Gravity;
-	Field* field = FindGameObject<Field>();
-	int ret = field->HitCheck(x, y + 64);
-	if (ret > 0) {
-		y -= ret;
-		velocity = 0;
-		onGround = true;
-	} else {
-		onGround = false;
+	if (velocity >= 0) {
+		Field* field = FindGameObject<Field>();
+		int push1 = field->HitCheckDown(x + 14, y + 64);
+		int push2 = field->HitCheckDown(x + 50, y + 64);
+		int push = max(push1, push2);
+		if (push > 0) {
+	  		y -= push - 1;
+			velocity = 0;
+			onGround = true;
+		}
+		else {
+			onGround = false;
+		}
+	}
+	else {
+		Field* field = FindGameObject<Field>();
+		int push1 = field->HitCheckUp(x + 14, y + 5);
+		int push2 = field->HitCheckUp(x + 50, y + 5);
+		int push = max(push1, push2);
+		if (push > 0) {
+			y += push;
+			velocity = 0;
+		}
 	}
 }
 
