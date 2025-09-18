@@ -13,7 +13,10 @@ public:
 	int HitCheckLeft(int px, int py);
 	int HitCheckUp(int px, int py);
 	int HitCheckDown(int px, int py);
+	int GetScollX() { return scrollX; }
+	void SetScrollX(int s) { scrollX = s; }
 private:
 	int hImage;
 	float x, y;
+	int scrollX;
 };

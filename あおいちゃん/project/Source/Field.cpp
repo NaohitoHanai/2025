@@ -1,9 +1,14 @@
 #include "Field.h"
+#include <vector>
+#include "Player.h"
 
-int maps[3][8] = {
-	{1,0,0,0,0,1,1,1 },
-	{0,0,1,0,0,0,0,1 },
-	{1,1,1,1,1,0,1,1 },
+using namespace std;
+
+vector<vector<int>> maps = {
+	{1,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+	{0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+	{0,2,1,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,1,1,1,1 },
+	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },
 };
 
 Field::Field()
@@ -11,6 +16,14 @@ Field::Field()
 	hImage = LoadGraph("data/image/bgchar.png");
 	x = 0;
 	y = 600;
+	scrollX = 0;
+	for (int y = 0; y < maps.size(); y++) {
+		for (int x = 0; x < maps[y].size(); x++) {
+			if (maps[y][x] == 2) {
+				new Player(x * 64, y * 64 + 400);
+			}
+		}
+	}
 }
 
 Field::~Field()
@@ -19,14 +32,15 @@ Field::~Field()
 
 void Field::Update()
 {
+//	scrollX += 1; //‹­§ƒXƒNƒ[ƒ‹‚Ìê‡
 }
 
 void Field::Draw()
 {
-	for (int y = 0; y < 3; y++) {
-		for (int x = 0; x < 8; x++) {
+	for (int y = 0; y < maps.size(); y++) {
+		for (int x = 0; x < maps[y].size(); x++) {
 			if (maps[y][x] == 1) {
-				DrawRectGraph(x * 64, y * 64 + 400, 0, 32, 64, 64, hImage, 1);
+				DrawRectGraph(x * 64-scrollX, y * 64 + 400, 0, 32, 64, 64, hImage, 1);
 			}
 		}
 	}
@@ -67,6 +81,9 @@ int Field::HitCheckUp(int px, int py)
 
 int Field::HitCheckDown(int px, int py)
 {
+	if (py < 400) {
+		return 0;
+	}
 	int x = px / 64;
 	int y = (py - 400) / 64;
 	if (maps[y][x] == 1)

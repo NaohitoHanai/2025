@@ -5,6 +5,7 @@ class Player : public GameObject
 {
 public:
 	Player();
+	Player(int sx, int sy);
 	~Player();
 	void Update() override;
 	void Draw() override;

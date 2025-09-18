@@ -4,7 +4,7 @@
 
 PlayScene::PlayScene()
 {
-	new Player();
+//	new Player(100, 200);
 	new Field();
 }
 

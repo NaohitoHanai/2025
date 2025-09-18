@@ -10,10 +10,17 @@ Player::Player()
 {
 	hImage = LoadGraph("data/image/aoi.png");
 	x = 200;
-//	y = 0;
-//	velocity = 0;
 	y = 500;
-	velocity = V0;
+	velocity = 0;
+	onGround = false;
+}
+
+Player::Player(int sx, int sy)
+{
+	hImage = LoadGraph("data/image/aoi.png");
+	x = sx;
+	y = sy;
+	velocity = 0;
 	onGround = false;
 }
 
@@ -73,10 +80,18 @@ void Player::Update()
 			velocity = 0;
 		}
 	}
+	//ここでスクロールを書く
+	Field* field = FindGameObject<Field>();
+	int sc = field->GetScollX();
+	if (x-sc >= 300) {
+		field->SetScrollX(x-300);
+	}
 }
 
 // 表示するところ
 void Player::Draw()
 {
-	DrawRectGraph(x, y, 0, 0, 64, 64, hImage, 1);
+	Field* field = FindGameObject<Field>();
+	int sc = field->GetScollX();
+	DrawRectGraph(x-sc, y, 0, 0, 64, 64, hImage, 1);
 }
