@@ -84,7 +84,7 @@ void Player::Update()
 	Field* field = FindGameObject<Field>();
 	int sc = field->GetScollX();
 	if (x-sc >= 300) {
-		field->SetScrollX(x-300);
+		field->SetScrollX(x-300);	
 	}
 }
 
