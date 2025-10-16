@@ -1,13 +1,11 @@
 #include "PlayScene.h"
 #include "Player.h"
 #include "Field.h"
-#include "GameOver.h"
 
 PlayScene::PlayScene()
 {
 //	new Player(100, 200);
 	new Field();
-	new GameOver();
 }
 
 PlayScene::~PlayScene()

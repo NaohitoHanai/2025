@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Field.h"
+#include "GameOver.h"
 
 static const float Gravity = 0.2;
 static const float V0 = -10.0;
@@ -39,7 +40,7 @@ void Player::Update()
 		int push1 = field->HitCheckRight(x + 50, y + 5);
 		int push2 = field->HitCheckRight(x + 50, y + 63);
 		x -= max(push1, push2);
-		}
+	}
 	if (CheckHitKey(KEY_INPUT_A)) {
 		x -= 2; 
 		Field* field = FindGameObject<Field>();
@@ -66,8 +67,11 @@ void Player::Update()
 			velocity = 0;
 			onGround = true;
 		}
-		else {
+		else { // °‚ª‚È‚©‚Á‚½
 			onGround = false;
+			if (field->OutOfMap(x, y)) {
+				new GameOver();
+			}
 		}
 	}
 	else {
