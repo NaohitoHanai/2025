@@ -53,6 +53,8 @@ int Field::HitCheckRight(int px, int py)
 		return 0;
 	int x = px / 64;
 	int y = (py - 400) / 64;
+	if (y >= maps.size())
+		return 0;
 	if (maps[y][x] == 1)
 		return px % 64 + 1;
 	return 0;
@@ -64,6 +66,8 @@ int Field::HitCheckLeft(int px, int py)
 		return 0;
 	int x = px / 64;
 	int y = (py - 400) / 64;
+	if (y >= maps.size())
+		return 0;
 	if (maps[y][x] == 1)
 		return 64 - px % 64;
 	return 0;
@@ -75,6 +79,8 @@ int Field::HitCheckUp(int px, int py)
 		return 0;
 	int x = px / 64;
 	int y = (py - 400) / 64;
+	if (y >= maps.size())
+		return 0;
 	if (maps[y][x] == 1)
 		return 64 - (py-400) % 64;
 	return 0;
@@ -87,8 +93,8 @@ int Field::HitCheckDown(int px, int py)
 	}
 	int x = px / 64;
 	int y = (py - 400) / 64;
-//	if (y>= maps.size())
-//		return 0;
+	if (y>= maps.size())
+		return 0;
 	if (maps[y][x] == 1)
 		return (py-400) % 64 + 1;
 	return 0;
