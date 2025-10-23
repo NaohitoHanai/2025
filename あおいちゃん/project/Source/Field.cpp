@@ -6,8 +6,8 @@ using namespace std;
 
 vector<vector<int>> maps = {
 	{1,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-	{0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-	{0,2,1,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,1,1,1,1 },
+	{0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,0,0,0 },
+	{0,0,1,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,1,1,1,1 },
 	{0,2,1,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,1,1,1,1 },
 	{1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },
 };
@@ -103,6 +103,21 @@ int Field::HitCheckDown(int px, int py)
 bool Field::OutOfMap(int px, int py)
 {
 	if (py > 400 + 64 * maps.size()) {
+		return true;
+	}
+	return false;
+}
+
+bool Field::IsGoal(int px, int py)
+{
+	if (py < 400) {
+		return 0;
+	}
+	int x = px / 64;
+	int y = (py - 400) / 64;
+	if (y >= maps.size())
+		return 0;
+	if (maps[y][x] == 9) {
 		return true;
 	}
 	return false;

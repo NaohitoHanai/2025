@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Field.h"
 #include "GameOver.h"
+#include "Clear.h"
 
 static const float Gravity = 0.2;
 static const float V0 = -10.0;
@@ -89,6 +90,10 @@ void Player::Update()
 	int sc = field->GetScollX();
 	if (x-sc >= 300) {
 		field->SetScrollX(x-300);	
+	}
+
+	if (field->IsGoal(x + 32, y + 32)) {
+		new Clear();
 	}
 }
 
