@@ -1,16 +1,16 @@
 #pragma once
 #include "../Library/GameObject.h"
 
-class Bird : public GameObject
+class Stone : public GameObject
 {
 public:
-	Bird();
-	Bird(int sx, int sy);
-	~Bird();
+	Stone();
+	Stone(int sx, int sy, float vx, float vy);
+	~Stone();
 	void Update() override;
 	void Draw() override;
-	bool IsHit(float tx, float ty);
 private:
 	int hImage;
 	float x, y;
+	float velocityX, velocityY;
 };

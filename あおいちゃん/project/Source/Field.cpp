@@ -17,8 +17,6 @@ vector<vector<int>> maps;
 
 Field::Field(int stage)
 {
-	new Bird(0, 0);
-
 	char filename[60];
 	sprintf_s<60>(filename, "data/Stage%02d.csv", stage);
 	// CSV‚©‚ç“Ç‚ñ‚ÅAmaps‚ğì‚é
