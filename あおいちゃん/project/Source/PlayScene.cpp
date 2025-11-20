@@ -2,10 +2,14 @@
 #include "Player.h"
 #include "Field.h"
 #include "Stone.h"
+#include "Common.h"
 
 PlayScene::PlayScene()
 {
-//	new Player(100, 200);
+	Common* c = FindGameObject<Common>();
+	int st = c->stageNumber;
+
+	//	new Player(100, 200);
 	new Field(0);
 //	new Stone(100,100);
 }

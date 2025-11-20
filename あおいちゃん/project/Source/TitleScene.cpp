@@ -1,4 +1,5 @@
 #include "TitleScene.h"
+#include "Common.h"
 
 TitleScene::TitleScene()
 {
@@ -10,6 +11,13 @@ TitleScene::~TitleScene()
 
 void TitleScene::Update()
 {
+	Common* c = FindGameObject<Common>();
+	if (CheckHitKey(KEY_INPUT_1)) {
+		c->stageNumber = 1;
+	}
+	if (CheckHitKey(KEY_INPUT_2)) {
+		c->stageNumber = 2;
+	}
 	if (CheckHitKey(KEY_INPUT_P)) {
 		SceneManager::ChangeScene("PLAY");
 	}

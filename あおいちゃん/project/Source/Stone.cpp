@@ -1,6 +1,7 @@
 #include "Stone.h"
 #include "Field.h"
 #include "Bird.h"
+#include <assert.h>
 
 Stone::Stone()
 {
@@ -12,6 +13,8 @@ Stone::Stone()
 Stone::Stone(int sx, int sy, float vx, float vy)
 {
 	hImage = LoadGraph("data/image/stone.png");
+	assert(hImage > 0);
+
 	x = sx;
 	y = sy;
 	velocityX = vx;
@@ -32,7 +35,7 @@ void Stone::Update()
 // Bird‚ª‚¢‚Á‚Ï‚¢‚¢‚é‚Æ‚«
 	auto birds = FindGameObjects<Bird>();
 	for (auto b : birds) {
-		if (b->IsHit(x, y)) {
+		if (b->IsHit(x+10, y+10, 5)) {
 			DestroyMe();
 		}
 	}
@@ -44,4 +47,5 @@ void Stone::Draw()
 	Field* field = FindGameObject<Field>();
 	int sc = field->GetScollX();
 	DrawGraph(x - sc, y, hImage, 1);
+	DrawCircle(x+10 - sc, y+10, 5, GetColor(0, 0, 255), FALSE);
 }

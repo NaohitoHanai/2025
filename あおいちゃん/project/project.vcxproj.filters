@@ -71,6 +71,7 @@
     <ClCompile Include="Source\Stone.cpp">
       <Filter>PlayScene</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Common.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Source\Stone.h">
       <Filter>PlayScene</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Common.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">
