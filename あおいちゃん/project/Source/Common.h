@@ -10,4 +10,5 @@ public:
 	int stageNumber;
 	int score;
 	int hiScore;
+	bool noDead;
 };

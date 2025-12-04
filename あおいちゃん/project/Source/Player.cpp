@@ -97,13 +97,15 @@ void Player::Update()
 	}
 	//‚±‚±‚ÅƒXƒNƒ[ƒ‹‚ğ‘‚­
 	Field* field = FindGameObject<Field>();
-	int sc = field->GetScollX();
-	if (x-sc >= 300) {
-		field->SetScrollX(x-300);	
-	}
+	if (field != nullptr) {
+		int sc = field->GetScollX();
+		if (x - sc >= 300) {
+			field->SetScrollX(x - 300);
+		}
 
-	if (field->IsGoal(x + 32, y + 32)) {
-		new Clear();
+		if (field->IsGoal(x + 32, y + 32)) {
+			new Clear();
+		}
 	}
 }
 

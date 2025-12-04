@@ -34,11 +34,22 @@ void Stone::Update()
 //	b->IsHit(x, y);
 // Bird‚ª‚¢‚Á‚Ï‚¢‚¢‚é‚Æ‚«
 	auto birds = FindGameObjects<Bird>();
+//–{“–‚È‚ç‚±‚¤‘‚­
+// 	for (std::list<Bird*>::iterator it = birds.begin();
+//			it != birds.end(); it++) {
+//		Bird* b = *it;
 	for (auto b : birds) {
 		if (b->IsHit(x+10, y+10, 5)) {
 			DestroyMe();
 		}
 	}
+
+	//int m[20];
+	//for (int& d : m) { // int&‚Ì•‚ÍQÆ‚Æ‚¢‚¤ˆÓ–¡
+	//	if (d == 0) {
+	//		d = 3;
+	//	}
+	//}
 }
 
 
