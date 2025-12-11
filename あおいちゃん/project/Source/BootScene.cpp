@@ -1,9 +1,11 @@
 #include "BootScene.h"
 #include "Common.h"
+#include "Fader.h"
 
 BootScene::BootScene()
 {
 	new Common();
+	new Fader();
 }
 
 BootScene::~BootScene()

@@ -3,6 +3,7 @@
 #include "Field.h"
 #include "Stone.h"
 #include "Common.h"
+#include "Fader.h"
 
 PlayScene::PlayScene()
 {
@@ -22,6 +23,13 @@ void PlayScene::Update()
 {
 	if (CheckHitKey(KEY_INPUT_T)) {
 		SceneManager::ChangeScene("TITLE");
+	}
+	Fader* fader = FindGameObject<Fader>();
+	if (CheckHitKey(KEY_INPUT_I)) {
+		fader->FadeIn(1.0f);
+	}
+	if (CheckHitKey(KEY_INPUT_O)) {
+		fader->FadeOut(1.0f);
 	}
 }
 

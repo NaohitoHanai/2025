@@ -72,6 +72,7 @@
       <Filter>PlayScene</Filter>
     </ClCompile>
     <ClCompile Include="Source\Common.cpp" />
+    <ClCompile Include="Source\Fader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -158,6 +159,7 @@
       <Filter>PlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\Common.h" />
+    <ClInclude Include="Source\Fader.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">
