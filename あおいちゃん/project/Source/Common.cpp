@@ -7,7 +7,7 @@ Common::Common()
 	stageNumber = 1;
 }
 
-void Common::Draw()
+void Common::Update()
 {
 	ImGui::Begin("Common");
 	ImGui::InputInt("Stage", &stageNumber);

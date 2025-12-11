@@ -5,7 +5,7 @@ class Common : public GameObject
 {
 public:
 	Common();
-	void Draw() override;
+	void Update() override;
 
 	int stageNumber;
 	int score;

@@ -12,7 +12,9 @@ public:
 	bool IsHit(float tx, float ty, float rad);
 private:
 	int hImage;
-	float x, y;
+	VECTOR3 position;
+	VECTOR3 velocity;
+//	float x, y;
 
 	int deadCounter; // >0ければカウントダウン
 };

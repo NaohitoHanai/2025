@@ -9,6 +9,9 @@ public:
 	~Player();
 	void Update() override;
 	void Draw() override;
+	VECTOR3 GetPosition() {
+		return VECTOR3(x,y,0);
+	}
 private:
 	int hImage;
 	float x, y;

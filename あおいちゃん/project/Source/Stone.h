@@ -11,6 +11,8 @@ public:
 	void Draw() override;
 private:
 	int hImage;
-	float x, y;
-	float velocityX, velocityY;
+	VECTOR3 position; // 座標
+	VECTOR3 velocity; // ベクトル
+//	float x, y;
+//	float velocityX, velocityY;
 };
